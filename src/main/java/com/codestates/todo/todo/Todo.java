@@ -24,4 +24,12 @@ public class Todo {
 
   @Column
   private boolean completed;
+
+  @Builder
+  public Todo(Long id, String title, int todo_order, boolean completed) {
+    this.id = id;
+    this.title = title;
+    this.todo_order = todo_order;
+    this.completed = completed;
+  }
 }
