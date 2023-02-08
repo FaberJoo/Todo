@@ -10,6 +10,7 @@ import org.springframework.test.web.servlet.ResultActions;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(TodoController.class)
 public class TodoControllerTest {
@@ -24,7 +25,7 @@ public class TodoControllerTest {
             .contentType(MediaType.APPLICATION_JSON));
 
     action
-        .andExpect(content().string("Post"));
+        .andExpect(status().isCreated());
   }
 
   @DisplayName("할 일 리스트 조회")
@@ -35,7 +36,7 @@ public class TodoControllerTest {
             .contentType(MediaType.APPLICATION_JSON));
 
     action
-        .andExpect(content().string("Get All"));
+        .andExpect(status().isOk());
   }
 
   @DisplayName("할 일 조회")
@@ -48,7 +49,7 @@ public class TodoControllerTest {
             .contentType(MediaType.APPLICATION_JSON));
 
     action
-        .andExpect(content().string("Get"));
+        .andExpect(status().isOk());
   }
 
   @DisplayName("할 일 수정")
@@ -61,7 +62,7 @@ public class TodoControllerTest {
             .contentType(MediaType.APPLICATION_JSON));
 
     action
-        .andExpect(content().string("Patch"));
+        .andExpect(status().isOk());
   }
 
   @DisplayName("할 일 리스트 삭제")
@@ -72,7 +73,7 @@ public class TodoControllerTest {
             .contentType(MediaType.APPLICATION_JSON));
 
     action
-        .andExpect(content().string("Delete All"));
+        .andExpect(status().isNoContent());
   }
 
   @DisplayName("할 일 삭제")
@@ -85,6 +86,6 @@ public class TodoControllerTest {
             .contentType(MediaType.APPLICATION_JSON));
 
     action
-        .andExpect(content().string("Delete"));
+        .andExpect(status().isNoContent());
   }
 }
